@@ -33,7 +33,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -52,6 +55,29 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- JAXB 2 Maven Plugin -->
+			<!-- XSD Source Folder -->
+			<!-- Java Object Source Folder -->
+			<!-- Clear Folder -> false -->
+			
+			<plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>jaxb2-maven-plugin</artifactId>
+	            <version>1.6</version>
+	            <executions>
+	                <execution>
+	                    <id>xjc</id>
+	                    <goals>
+	                        <goal>xjc</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	            <configuration>
+	            	<schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
+	            	<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+	          		<clearOutputDir>false</clearOutputDir>
+	            </configuration>
+	        </plugin>
 		</plugins>
 	</build>
 
